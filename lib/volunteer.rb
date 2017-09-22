@@ -53,7 +53,7 @@ class Volunteer
   def self.search(name)
     volunteers = Volunteer.all
     volunteers.select do |volunteer|
-      volunteer.name.downcase == name.downcase
+      volunteer.name.downcase.include?(name.downcase)
     end
   end
 end

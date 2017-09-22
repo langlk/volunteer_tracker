@@ -94,5 +94,15 @@ describe Volunteer do
       volunteer3.save
       expect(Volunteer.search('JOE')).to eq [volunteer2]
     end
+
+    it "returns volunteers when the search string is a substring of their name" do
+      volunteer1 = Volunteer.new({:name => 'Jane', :project_id => 1, :id => nil})
+      volunteer1.save
+      volunteer2 = Volunteer.new({:name => 'Janice', :project_id => 1, :id => nil})
+      volunteer2.save
+      volunteer3 = Volunteer.new({:name => 'Jack', :project_id => 1, :id => nil})
+      volunteer3.save
+      expect(Volunteer.search('Jan')).to eq [volunteer1, volunteer2]
+    end
   end
 end
