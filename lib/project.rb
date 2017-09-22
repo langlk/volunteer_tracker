@@ -18,6 +18,17 @@ class Project
     DB.exec("UPDATE projects SET title = '#{@title}' WHERE id = #{@id};")
   end
 
+  def volunteers
+    results = DB.exec("SELECT * FROM volunteers WHERE project_id = #{@id}")
+    results.map do |result|
+      Volunteer.new({
+        id: result["id"].to_i,
+        name: result["name"],
+        project_id: result["project_id"].to_i
+      })
+    end
+  end
+
   def ==(other_project)
     @title == other_project.title
   end
