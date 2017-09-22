@@ -64,3 +64,19 @@ describe 'the volunteer detail page path', {:type => :feature} do
     expect(page).to have_content('Jane')
   end
 end
+
+# Expanding Volunteer to have full CRUD functionality
+
+describe 'the volunteer delete path', {:type => :feature} do
+  it "allows a user to delete a volunteer" do
+    test_project = Project.new({:title => 'Teaching Kids to Code', :id => nil})
+    test_project.save
+    project_id = test_project.id.to_i
+    test_volunteer = Volunteer.new({:name => 'Jasmine', :project_id => project_id, :id => nil})
+    test_volunteer.save
+    visit "/projects/#{project_id}"
+    click_link('Jasmine')
+    click_button('Delete Volunteer')
+    expect(page).to have_no_content('Jasmine')
+  end
+end

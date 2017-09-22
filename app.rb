@@ -62,3 +62,9 @@ patch('/volunteers/:id/edit') do
   volunteer.update({name: params["name"], project_id: params["project-id"].to_i})
   redirect "/projects/#{volunteer.project_id}"
 end
+
+delete('/volunteers/:id/delete') do
+  volunteer = Volunteer.find(params[:id].to_i)
+  volunteer.delete
+  redirect "/projects/#{volunteer.project_id}"
+end
