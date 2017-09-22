@@ -6,6 +6,20 @@
     <title>Volunteer Tracker</title>
   </head>
   <body>
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Volunteer Tracker</h1>
+        <ul class="nav nav-pills">
+          <li role="presentation" class="<%= @section == 'home' ? 'active' : nil %>">
+            <a href="/">Home</a>
+          </li>
+          <li role="presentation" class="<%= @section == 'projects' ? 'active' : nil %>">
+            <a href="/projects">Projects</a>
+          </li>
+          <li role="presentation" class="<%= @section == 'volunteers' ? 'active' : nil %>"><a href="/volunteers">Volunteers</a></li>
+        </ul>
+      </div>
+    </div>
     <div class="container">
       <%= yield %>
     </div>

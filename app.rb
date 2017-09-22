@@ -6,9 +6,10 @@ require "./lib/project"
 require "./lib/volunteer"
 require "pry"
 
-DB = PG.connect({:dbname => 'volunteer_tracker'})
+DB = PG.connect({:dbname => 'volunteer_tracker_test'})
 
 get('/') do
+  @section = 'home'
   @projects = Project.all
   erb(:index)
 end
@@ -20,13 +21,14 @@ post('/add-project') do
   redirect '/'
 end
 
-
 get('/projects/:id') do
+  @section = 'projects'
   @project = Project.find(params[:id].to_i)
   erb(:project)
 end
 
 get('/projects/:id/edit') do
+  @section = 'projects'
   @project = Project.find(params[:id].to_i)
   erb(:edit)
 end
@@ -52,6 +54,7 @@ post('/add-volunteer') do
 end
 
 get('/volunteers/:id') do
+  @section = 'volunteers'
   @volunteer = Volunteer.find(params[:id].to_i)
   @projects = Project.all
   erb(:volunteer)
