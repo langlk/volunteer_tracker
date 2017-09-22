@@ -4,9 +4,9 @@
   <form action="/volunteers/<%= @volunteer.id %>/edit" method="post">
     <input type="hidden" name="_method" value="patch">
 
-    <div class="form-group">
-      <label for="name">Name</label>
-      <input type="text" name="name" class="form-control" value="<%= @volunteer.name %>">
+    <div class="form-group name">
+      <label for="name" class="control-label">Name</label>
+      <input id="name" type="text" name="name" class="form-control" value="<%= @volunteer.name %>">
     </div>
 
     <div class="form-group">
@@ -18,7 +18,11 @@
       </select>
     </div>
 
-    <button type="submit" class="btn">Update Volunteer</button>
+    <div class="alert alert-danger volunteer-error">
+      Name cannot be blank.
+    </div>
+
+    <button type="submit" class="btn volunteer-submit">Update Volunteer</button>
   </form>
 
   <form class="delete" action="/volunteers/<%= @volunteer.id %>/delete" method="post">
