@@ -20,6 +20,10 @@ class Volunteer
     DB.exec("UPDATE volunteers SET name = '#{@name}', project_id = #{@project_id} WHERE id = #{@id};")
   end
 
+  def delete
+    DB.exec("DELETE FROM volunteers WHERE id = #{@id};")
+  end
+
   def ==(other_volunteer)
     @name == other_volunteer.name
   end
