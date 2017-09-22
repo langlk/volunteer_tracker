@@ -14,6 +14,12 @@ class Volunteer
     @id = results.first["id"].to_i
   end
 
+  def update(attributes)
+    @name = attributes[:name]
+    @project_id = attributes[:project_id]
+    DB.exec("UPDATE volunteers SET name = '#{@name}', project_id = #{@project_id} WHERE id = #{@id};")
+  end
+
   def ==(other_volunteer)
     @name == other_volunteer.name
   end
