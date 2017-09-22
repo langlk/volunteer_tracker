@@ -13,11 +13,6 @@ class Project
     @id = results.first["id"].to_i
   end
 
-  def update(attributes)
-    @title = attributes[:title]
-    DB.exec("UPDATE projects SET title = '#{@title}' WHERE id = #{@id};")
-  end
-
   def volunteers
     results = DB.exec("SELECT * FROM volunteers WHERE project_id = #{@id}")
     results.map do |result|
@@ -27,6 +22,16 @@ class Project
         project_id: result["project_id"].to_i
       })
     end
+  end
+
+  def update(attributes)
+    @title = attributes[:title]
+    DB.exec("UPDATE projects SET title = '#{@title}' WHERE id = #{@id};")
+  end
+
+  def delete
+    DB.exec("DELETE FROM volunteers WHERE project_id = #{@id};")
+    DB.exec("DELETE FROM projects WHERE id = #{@id};")
   end
 
   def ==(other_project)

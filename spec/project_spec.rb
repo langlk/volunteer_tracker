@@ -60,7 +60,7 @@ describe Project do
       expect(Project.find(project1.id)).to eq project1
     end
   end
-  
+
   describe '#volunteers' do
     it 'returns all volunteers for a specific project' do
       project = Project.new({:title => 'Teaching Kids to Code', :id => nil})
@@ -82,12 +82,12 @@ describe Project do
     end
   end
 
-  # context '#delete' do
-  #   it 'allows a user to delete a project' do
-  #     project = Project.new({:title => 'Teaching Kids to Code', :id => nil})
-  #     project.save
-  #     project.delete
-  #     expect(Project.all).to eq []
-  #   end
-  # end
+  context '#delete' do
+    it 'allows a user to delete a project' do
+      project = Project.new({:title => 'Teaching Kids to Code', :id => nil})
+      project.save
+      project.delete
+      expect(Project.all).to eq []
+    end
+  end
 end
