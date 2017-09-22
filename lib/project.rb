@@ -12,4 +12,8 @@ class Project
     results = DB.exec("INSERT INTO projects (title) VALUES ('#{@title}') RETURNING id;")
     @id = results.first["id"].to_i
   end
+
+  def ==(other_project)
+    @title == other_project.title
+  end
 end
