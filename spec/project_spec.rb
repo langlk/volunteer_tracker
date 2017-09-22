@@ -90,4 +90,16 @@ describe Project do
       expect(Project.all).to eq []
     end
   end
+
+  describe '.search' do
+    it "searches for a project by name, ignoring case" do
+      project = Project.new({:title => 'Teaching Kids to Code', :id => nil})
+      project.save
+      project2 = Project.new({:title => 'Teaching Kids Math', :id => nil})
+      project2.save
+      project3 = Project.new({:title => 'Teaching Kids Science', :id => nil})
+      project3.save
+      expect(Project.search('teaching kids MATH')).to eq [project2]
+    end
+  end
 end

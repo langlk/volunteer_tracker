@@ -57,4 +57,11 @@ class Project
       })
     end
   end
+
+  def self.search(title)
+    projects = Project.all
+    projects.select do |project|
+      project.title.downcase == title.downcase
+    end
+  end
 end
