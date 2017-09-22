@@ -2,7 +2,15 @@
 
 <h2>Projects</h2>
 
-
+<% if @projects.any? %>
+  <ul>
+    <% @projects.each do |project| %>
+      <li>
+        <a href="/projects/<%= project.id %>"><%= project.title %></a>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
 
 <h2>Add a Project</h2>
 <form action="/" method="post">
@@ -10,5 +18,5 @@
     <label for="title">Project Title</label>
     <input type="text" name="title" class="form-control">
   </div>
-  <button type="sumbit" class="btn">Create Project</button>
+  <button type="submit" class="btn">Create Project</button>
 </form>
