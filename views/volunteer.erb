@@ -18,7 +18,7 @@
     <button type="submit" class="btn">Update Volunteer</button>
   </form>
 
-  <form class="" action="/volunteers/<%= @volunteer.id %>/delete" method="post">
+  <form action="/volunteers/<%= @volunteer.id %>/delete" method="post">
     <input type="hidden" name="_method" value="delete">
     <button type="submit" class="btn">Delete Volunteer</button>
   </form>
