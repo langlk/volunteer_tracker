@@ -13,6 +13,11 @@ class Project
     @id = results.first["id"].to_i
   end
 
+  def update(attributes)
+    @title = attributes[:title]
+    DB.exec("UPDATE projects SET title = '#{@title}' WHERE id = #{@id};")
+  end
+
   def ==(other_project)
     @title == other_project.title
   end
