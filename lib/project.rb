@@ -16,4 +16,14 @@ class Project
   def ==(other_project)
     @title == other_project.title
   end
+
+  def self.all
+    results = DB.exec("SELECT * FROM projects;")
+    results.map do |result|
+      Project.new({
+        title: result["title"],
+        id: result["id"].to_i
+      })
+    end
+  end
 end
