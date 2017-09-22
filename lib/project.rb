@@ -61,7 +61,7 @@ class Project
   def self.search(title)
     projects = Project.all
     projects.select do |project|
-      project.title.downcase == title.downcase
+      project.title.downcase.include?(title.downcase)
     end
   end
 end

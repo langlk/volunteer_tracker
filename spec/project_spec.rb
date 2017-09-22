@@ -123,5 +123,15 @@ describe Project do
       project3.save
       expect(Project.search('teaching kids MATH')).to eq [project2]
     end
+
+    it "finds results where search term matches part of title as well" do
+      project = Project.new({:title => 'Teaching Kids to Code', :id => nil})
+      project.save
+      project2 = Project.new({:title => 'Teaching Kids Math', :id => nil})
+      project2.save
+      project3 = Project.new({:title => 'Working at Food Bank', :id => nil})
+      project3.save
+      expect(Project.search('teaching kids')).to eq [project2, project]
+    end
   end
 end
