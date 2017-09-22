@@ -20,7 +20,8 @@ _A Ruby Web App for tracking the volunteers assigned to various nonprofit projec
 ## Specifications
 
 * Projects have a title and a unique id, and can be saved, viewed, updated, and deleted.
-* Volunteers have a name, project id, and unique id, and can be saved, viewed, and updated.
+* Volunteers have a name, project id, and unique id, and can be saved, viewed, updated, and deleted.
+* Search function for Projects and Volunteers finds all entries of that type where title (name for Volunteers) contains search term.
 
 ## Support and contact details
 
