@@ -6,7 +6,7 @@ require "./lib/project"
 require "./lib/volunteer"
 require "pry"
 
-DB = PG.connect({:dbname => 'volunteer_tracker_test'})
+DB = PG.connect({:dbname => 'volunteer_tracker'})
 
 get('/') do
   @section = 'home'
