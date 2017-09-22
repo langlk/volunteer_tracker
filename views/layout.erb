@@ -4,12 +4,15 @@
     <meta charset="utf-8">
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
     <link rel="stylesheet" href="/css/styles.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="/js/scripts.js"></script>
     <title>Volunteer Tracker</title>
   </head>
   <body>
     <div class="jumbotron">
       <div class="container">
         <h1>Volunteer Tracker</h1>
+
         <ul class="nav nav-tabs">
           <li role="presentation" class="<%= @section == 'home' ? 'active' : nil %>">
             <a href="/">Home</a>
@@ -17,12 +20,17 @@
           <li role="presentation" class="<%= @section == 'projects' ? 'active' : nil %>">
             <a href="/projects/all">Projects</a>
           </li>
-          <li role="presentation" class="<%= @section == 'volunteers' ? 'active' : nil %>"><a href="/volunteers/all">Volunteers</a></li>
+          <li role="presentation" class="<%= @section == 'volunteers' ? 'active' : nil %>">
+            <a href="/volunteers/all">Volunteers</a>
+          </li>
         </ul>
       </div>
     </div>
+
     <div class="container contents">
+
       <%= yield %>
+
     </div>
   </body>
 </html>

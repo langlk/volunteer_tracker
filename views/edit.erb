@@ -4,12 +4,16 @@
   <form action="/projects/<%= @project.id %>/edit" method="post">
     <input type="hidden" name="_method" value="patch">
 
-    <div class="form-group">
-      <label for="title">Project Title</label>
-      <input type="text" name="title" class="form-control" value="<%= @project.title %>">
+    <div class="form-group title">
+      <label for="title" class="control-label">Project Title</label>
+      <input id="title" type="text" name="title" class="form-control" value="<%= @project.title %>">
     </div>
 
-    <button type="submit" class="btn">Update Project</button>
+    <div class="alert alert-danger">
+      Project Title cannot be blank.
+    </div>
+
+    <button type="submit" class="btn project-info">Update Project</button>
   </form>
 
   <form class="delete" action="/projects/<%= @project.id %>/delete" method="post">

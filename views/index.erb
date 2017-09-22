@@ -5,12 +5,18 @@
 <div class="row">
   <div class="col-sm-6">
     <h3>Add a Project</h3>
+
     <form action="/add-project" method="post">
-      <div class="form-group">
-        <label for="title">Project Title</label>
-        <input type="text" name="title" class="form-control">
+      <div class="form-group title">
+        <label for="title" class="control-label">Project Title</label>
+        <input id="title" type="text" name="title" class="form-control">
       </div>
-      <button type="submit" class="btn">Create Project</button>
+
+      <div class="alert alert-danger">
+        Project Title cannot be blank.
+      </div>
+
+      <button type="submit" class="btn project-info">Create Project</button>
     </form>
 
     <% if @projects.any? %>

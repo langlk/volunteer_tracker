@@ -32,3 +32,7 @@ form.search-box {
 form.delete {
   margin-top: 0.8em;
 }
+
+.alert {
+  display: none;
+}
