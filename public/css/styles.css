@@ -1,5 +1,10 @@
+body {
+  padding-bottom: 50px;
+}
+
 .jumbotron {
   background-color: #ddd;
+  padding-top: 2em;
   padding-bottom: 0px;
 }
 
@@ -22,4 +27,8 @@ form.search-box {
 
 .search-box .btn {
   vertical-align: bottom;
+}
+
+form.delete {
+  margin-top: 0.8em;
 }

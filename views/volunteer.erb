@@ -3,10 +3,12 @@
 
   <form action="/volunteers/<%= @volunteer.id %>/edit" method="post">
     <input type="hidden" name="_method" value="patch">
+
     <div class="form-group">
       <label for="name">Name</label>
       <input type="text" name="name" class="form-control" value="<%= @volunteer.name %>">
     </div>
+
     <div class="form-group">
       <label for="project-id">Project</label>
       <select class="form-control" name="project-id">
@@ -15,14 +17,17 @@
         <% end %>
       </select>
     </div>
+
     <button type="submit" class="btn">Update Volunteer</button>
   </form>
 
-  <form action="/volunteers/<%= @volunteer.id %>/delete" method="post">
+  <form class="delete" action="/volunteers/<%= @volunteer.id %>/delete" method="post">
     <input type="hidden" name="_method" value="delete">
     <button type="submit" class="btn">Delete Volunteer</button>
   </form>
+
 <% else %>
   <h2>Volunteer Not Found</h2>
 <% end %>
+
 <h5><a href="/">Back to Homepage</a></h5>
