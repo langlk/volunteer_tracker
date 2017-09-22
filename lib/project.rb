@@ -14,7 +14,7 @@ class Project
   end
 
   def volunteers
-    results = DB.exec("SELECT * FROM volunteers WHERE project_id = #{@id}")
+    results = DB.exec("SELECT * FROM volunteers WHERE project_id = #{@id} ORDER BY name;")
     results.map do |result|
       Volunteer.new({
         id: result["id"].to_i,

@@ -71,6 +71,18 @@ describe Project do
       volunteer2.save
       expect(project.volunteers).to eq [volunteer1, volunteer2]
     end
+
+    it "returns volunteers in alphabetical order" do
+      project = Project.new({:title => 'Teaching Kids to Code', :id => nil})
+      project.save
+      volunteer1 = Volunteer.new({:name => 'Jasmine', :project_id => project.id, :id => nil})
+      volunteer1.save
+      volunteer2 = Volunteer.new({:name => 'Joe', :project_id => project.id, :id => nil})
+      volunteer2.save
+      volunteer3 = Volunteer.new({:name => 'Bob', :project_id => project.id, :id => nil})
+      volunteer3.save
+      expect(project.volunteers).to eq [volunteer3, volunteer1, volunteer2]
+    end
   end
 
   describe '#update' do
