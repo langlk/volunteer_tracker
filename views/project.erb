@@ -1,0 +1,8 @@
+<% if @project %>
+  <h1><%= @project.title %></h1>
+
+  <h5><a href="/projects/<%= @project.id %>/edit">Edit Project</a></h5>
+<% else %>
+  <h2>Project Not Found</h2>
+<% end %>
+<h5><a href="/">Back to Homepage</a></h5>

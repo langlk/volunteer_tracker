@@ -1,0 +1,15 @@
+<% if @project %>
+  <h1>Edit Project</h1>
+
+  <form action="/projects/<%= @project.id %>/edit" method="post">
+    <input type="hidden" name="_method" value="patch">
+    <div class="form-group">
+      <label for="title">Project Title</label>
+      <input type="text" name="title" class="form-control" value="<%= @project.title %>">
+    </div>
+    <button type="submit" class="btn">Update Project</button>
+  </form>
+<% else %>
+  <h2>Project not Found</h2>
+<% end %>
+<h5><a href="/">Back to Homepage</a></h5>

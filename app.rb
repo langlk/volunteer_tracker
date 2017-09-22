@@ -19,3 +19,19 @@ post('/') do
   project.save
   redirect '/'
 end
+
+get('/projects/:id') do
+  @project = Project.find(params[:id].to_i)
+  erb(:project)
+end
+
+get('/projects/:id/edit') do
+  @project = Project.find(params[:id].to_i)
+  erb(:edit)
+end
+
+patch('/projects/:id/edit') do
+  project = Project.find(params[:id].to_i)
+  project.update({title: params["title"]})
+  redirect "/projects/#{project.id}"
+end
