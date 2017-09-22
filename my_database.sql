@@ -120,8 +120,6 @@ ALTER TABLE ONLY volunteers ALTER COLUMN id SET DEFAULT nextval('volunteers_id_s
 --
 
 COPY projects (id, title) FROM stdin;
-1	New Project
-3	Other Project
 \.
 
 
@@ -137,7 +135,6 @@ SELECT pg_catalog.setval('projects_id_seq', 3, true);
 --
 
 COPY volunteers (id, name, project_id) FROM stdin;
-1	Max	1
 \.
 
 
