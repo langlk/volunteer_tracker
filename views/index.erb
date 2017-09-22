@@ -1,6 +1,6 @@
 <h1>Welcome to your Volunteer Tracker</h1>
 
-<h2>Projects</h2>
+<h3>Projects</h3>
 
 <% if @projects.any? %>
   <ul>
@@ -12,11 +12,30 @@
   </ul>
 <% end %>
 
-<h2>Add a Project</h2>
-<form action="/" method="post">
+<h3>Add a Project</h3>
+<form action="/add-project" method="post">
   <div class="form-group">
     <label for="title">Project Title</label>
     <input type="text" name="title" class="form-control">
   </div>
   <button type="submit" class="btn">Create Project</button>
 </form>
+
+<% if @projects.any? %>
+  <h3>Add a Volunteer</h3>
+  <form action="/add-volunteer" method="post">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" name="name" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="project-id">Project</label>
+      <select class="form-control" name="project-id">
+        <% @projects.each do |project| %>
+          <option value="<%= project.id %>"><%= project.title %></option>
+        <% end %>
+      </select>
+    </div>
+    <button type="submit" class="btn">Add Volunteer</button>
+  </form>
+<% end %>

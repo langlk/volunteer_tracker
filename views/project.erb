@@ -2,6 +2,19 @@
   <h1><%= @project.title %></h1>
 
   <h5><a href="/projects/<%= @project.id %>/edit">Edit Project</a></h5>
+
+  <h3>Volunteers</h3>
+  <% if @project.volunteers.any? %>
+    <ul>
+      <% @project.volunteers.each do |volunteer| %>
+        <li>
+          <a href="/volunteers/<%= volunteer.id %>"><%= volunteer.name %></a>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>No Volunteers Assigned</p>
+  <% end %>
 <% else %>
   <h2>Project Not Found</h2>
 <% end %>

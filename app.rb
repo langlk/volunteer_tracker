@@ -13,10 +13,18 @@ get('/') do
   erb(:index)
 end
 
-post('/') do
+post('/add-project') do
   title = params["title"]
   project = Project.new({title: title})
   project.save
+  redirect '/'
+end
+
+post('/add-volunteer') do
+  name = params["name"]
+  project_id = params["project-id"].to_i
+  volunteer = Volunteer.new({name: name, project_id: project_id})
+  volunteer.save
   redirect '/'
 end
 
