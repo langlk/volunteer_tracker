@@ -83,7 +83,7 @@ end
 
 # Search Functionality
 
-describe 'project search', {:type => :feature} do
+describe 'the project search path', {:type => :feature} do
   it "allows a user to search for a project" do
     test_project = Project.new({:title => 'Teaching Kids to Code', :id => nil})
     test_project.save
@@ -95,7 +95,7 @@ describe 'project search', {:type => :feature} do
   end
 end
 
-describe 'volunteer search', {:type => :feature} do
+describe 'the volunteer search path', {:type => :feature} do
   it "allows a user to search for a project" do
     test_project = Project.new({:title => 'Teaching Kids to Code', :id => nil})
     test_project.save
@@ -109,7 +109,9 @@ describe 'volunteer search', {:type => :feature} do
   end
 end
 
-describe 'volunteer list page', {:type => :feature} do
+# Adding Volunteer List Page
+
+describe 'the volunteer list path', {:type => :feature} do
   it "shows all volunteers in alphabetical order by name" do
     test_project = Project.new({:title => 'Teaching Kids to Code', :id => nil})
     test_project.save
@@ -122,5 +124,18 @@ describe 'volunteer list page', {:type => :feature} do
     volunteer3.save
     visit('/volunteers/all')
     expect(page).to have_content('Adam Chris Jasmine')
+  end
+end
+
+describe 'the project list path', {:type => :feature} do
+  it "shows all projects in alphabetical order by title" do
+    project1 = Project.new({:title => 'Teaching Kids to Code', :id => nil})
+    project1.save
+    project2 = Project.new({:title => 'Cleaning up Neighborhood Parks', :id => nil})
+    project2.save
+    project3 = Project.new({:title => 'Assisting Food Bank', :id => nil})
+    project3.save
+    visit('/projects/all')
+    expect(page).to have_content("Teaching Kids to Code Cleaning up Neighborhood Parks Assisting Food Bank")
   end
 end
