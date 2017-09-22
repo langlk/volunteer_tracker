@@ -39,7 +39,7 @@ class Project
   end
 
   def self.all
-    results = DB.exec("SELECT * FROM projects;")
+    results = DB.exec("SELECT * FROM projects ORDER BY title;")
     results.map do |result|
       Project.new({
         title: result["title"],

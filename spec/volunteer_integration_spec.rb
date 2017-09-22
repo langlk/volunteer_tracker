@@ -136,6 +136,6 @@ describe 'the project list path', {:type => :feature} do
     project3 = Project.new({:title => 'Assisting Food Bank', :id => nil})
     project3.save
     visit('/projects/all')
-    expect(page).to have_content("Teaching Kids to Code Cleaning up Neighborhood Parks Assisting Food Bank")
+    expect(page).to have_content("Assisting Food Bank Cleaning up Neighborhood Parks Teaching Kids to Code")
   end
 end

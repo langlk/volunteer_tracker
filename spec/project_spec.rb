@@ -41,6 +41,16 @@ describe Project do
       project2.save
       expect(Project.all).to eq [project1, project2]
     end
+
+    it 'returns projects in alphabetical order by title' do
+      project1 = Project.new({:title => 'Teaching Kids to Code', :id => nil})
+      project1.save
+      project2 = Project.new({:title => 'Teaching Ruby to Kids', :id => nil})
+      project2.save
+      project3 = Project.new({:title => 'Cleaning Neighborhood Parks', :id => nil})
+      project3.save
+      expect(Project.all).to eq [project3, project1, project2]
+    end
   end
 
   describe '#save' do
