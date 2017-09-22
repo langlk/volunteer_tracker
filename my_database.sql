@@ -127,7 +127,7 @@ COPY projects (id, title) FROM stdin;
 -- Name: projects_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kels.langlois
 --
 
-SELECT pg_catalog.setval('projects_id_seq', 3, true);
+SELECT pg_catalog.setval('projects_id_seq', 6, true);
 
 
 --
@@ -142,7 +142,7 @@ COPY volunteers (id, name, project_id) FROM stdin;
 -- Name: volunteers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kels.langlois
 --
 
-SELECT pg_catalog.setval('volunteers_id_seq', 2, true);
+SELECT pg_catalog.setval('volunteers_id_seq', 5, true);
 
 
 --
