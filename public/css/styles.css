@@ -6,3 +6,20 @@
 .nav-tabs {
   margin-top: 1em;
 }
+
+form.search-box {
+  min-width: 130px;
+  max-width: 300px;
+  margin-bottom: 1.2em;
+}
+
+.search-box input {
+  display: inline-block;
+  width: -moz-calc(100% - 45px);
+  width: -webkit-calc(100% - 45px);
+  width: calc(100% - 45px);
+}
+
+.search-box .btn {
+  vertical-align: bottom;
+}

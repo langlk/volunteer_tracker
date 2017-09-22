@@ -1,7 +1,7 @@
 <% if (@section == 'projects') | (@section == 'volunteers') %>
   <h2><%= @search_term ? "Search" : "All" %> <%= @section.capitalize %></h2>
   <% if @list.any? %>
-    <form action="/<%= @section %>/all">
+    <form class="search-box" action="/<%= @section %>/all">
       <input type="text" name="search-term" class="form-control" placeholder="Search">
 
       <button id="search" type="submit" class="btn btn-default">
