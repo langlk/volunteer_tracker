@@ -6,7 +6,7 @@
 
 ## Description
 
-_A Ruby Web App for tracking the volunteers assigned to various nonprofit projects. Allows user to create, edit, and delete projects, and create and assign volunteers to them. User can also search projects by title and users by name._
+_A Ruby Web App for tracking the volunteers assigned to various nonprofit projects. Allows user to create, edit, and delete projects, and create and assign volunteers to them. User can also search projects by title and volunteers by name._
 
 ## Setup/Installation Requirements
 
