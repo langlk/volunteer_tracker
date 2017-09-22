@@ -8,4 +8,8 @@ class Volunteer
     @name = attributes[:name]
     @project_id = attributes[:project_id]
   end
+
+  def ==(other_volunteer)
+    @name == other_volunteer.name
+  end
 end
