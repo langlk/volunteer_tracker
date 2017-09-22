@@ -73,4 +73,16 @@ describe Volunteer do
       expect(Volunteer.find(volunteer1.id)).to eq volunteer1
     end
   end
+
+  describe '.search' do
+    it "searches for a volunteer by their name, ignoring case" do
+      volunteer1 = Volunteer.new({:name => 'Jane', :project_id => 1, :id => nil})
+      volunteer1.save
+      volunteer2 = Volunteer.new({:name => 'Joe', :project_id => 1, :id => nil})
+      volunteer2.save
+      volunteer3 = Volunteer.new({:name => 'Jack', :project_id => 1, :id => nil})
+      volunteer3.save
+      expect(Volunteer.search('JOE')).to eq [volunteer2]
+    end
+  end
 end

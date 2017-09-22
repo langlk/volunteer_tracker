@@ -49,4 +49,11 @@ class Volunteer
       })
     end
   end
+
+  def self.search(name)
+    volunteers = Volunteer.all
+    volunteers.select do |volunteer|
+      volunteer.name.downcase == name.downcase
+    end
+  end
 end
