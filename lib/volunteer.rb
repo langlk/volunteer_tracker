@@ -28,4 +28,15 @@ class Volunteer
       })
     end
   end
+
+  def self.find(id)
+    results = DB.exec("SELECT * FROM volunteers WHERE id = #{id};")
+    if results.any?
+      return Volunteer.new({
+        id: results.first["id"].to_i,
+        name: results.first["name"],
+        project_id: results.first["project_id"].to_i
+      })
+    end
+  end
 end
