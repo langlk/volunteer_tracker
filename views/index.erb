@@ -1,41 +1,51 @@
-<h1>Welcome to your Volunteer Tracker</h1>
+<h1>Welcome to your Volunteer Tracker!</h1>
 
-<h3>Projects</h3>
+<p>Add a project below. Once at least one project is created, you'll have the option to add volunteers and assign them to projects.</p>
 
-<% if @projects.any? %>
-  <ul>
-    <% @projects.each do |project| %>
+<div class="row">
+  <div class="col-sm-6">
+    <h3>Add a Project</h3>
+    <form action="/add-project" method="post">
+      <div class="form-group">
+        <label for="title">Project Title</label>
+        <input type="text" name="title" class="form-control">
+      </div>
+      <button type="submit" class="btn">Create Project</button>
+    </form>
+
+    <% if @projects.any? %>
+      <h3>Add a Volunteer</h3>
+      <form action="/add-volunteer" method="post">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" name="name" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="project-id">Project</label>
+          <select class="form-control" name="project-id">
+            <% @projects.each do |project| %>
+              <option value="<%= project.id %>"><%= project.title %></option>
+            <% end %>
+          </select>
+        </div>
+        <button type="submit" class="btn">Add Volunteer</button>
+      </form>
+    <% end %>
+  </div>
+
+  <div class="col-sm-6">
+    <h3>Projects</h3>
+
+    <% if @projects.any? %>
+    <ul>
+      <% @projects.each do |project| %>
       <li>
         <a href="/projects/<%= project.id %>"><%= project.title %></a>
       </li>
+      <% end %>
+    </ul>
+    <% else %>
+      <p>No projects added yet.</p>
     <% end %>
-  </ul>
-<% end %>
-
-<h3>Add a Project</h3>
-<form action="/add-project" method="post">
-  <div class="form-group">
-    <label for="title">Project Title</label>
-    <input type="text" name="title" class="form-control">
   </div>
-  <button type="submit" class="btn">Create Project</button>
-</form>
-
-<% if @projects.any? %>
-  <h3>Add a Volunteer</h3>
-  <form action="/add-volunteer" method="post">
-    <div class="form-group">
-      <label for="name">Name</label>
-      <input type="text" name="name" class="form-control">
-    </div>
-    <div class="form-group">
-      <label for="project-id">Project</label>
-      <select class="form-control" name="project-id">
-        <% @projects.each do |project| %>
-          <option value="<%= project.id %>"><%= project.title %></option>
-        <% end %>
-      </select>
-    </div>
-    <button type="submit" class="btn">Add Volunteer</button>
-  </form>
-<% end %>
+</div>

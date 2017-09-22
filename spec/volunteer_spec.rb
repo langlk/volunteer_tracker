@@ -35,6 +35,16 @@ describe Volunteer do
       volunteer2.save
       expect(Volunteer.all).to eq [volunteer1, volunteer2]
     end
+
+    it "returns all volunteers, sorted alphabetically by name" do
+      volunteer1 = Volunteer.new({:name => 'Joe', :project_id => 1, :id => nil})
+      volunteer1.save
+      volunteer2 = Volunteer.new({:name => 'James', :project_id => 1, :id => nil})
+      volunteer2.save
+      volunteer3 = Volunteer.new({:name => 'John', :project_id => 1, :id => nil})
+      volunteer3.save
+      expect(Volunteer.all).to eq [volunteer2, volunteer1, volunteer3]
+    end
   end
 
   describe '#save' do

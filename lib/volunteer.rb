@@ -29,7 +29,7 @@ class Volunteer
   end
 
   def self.all
-    results = DB.exec("SELECT * FROM volunteers;")
+    results = DB.exec("SELECT * FROM volunteers ORDER BY name;")
     results.map do |result|
       Volunteer.new({
         id: result["id"].to_i,
