@@ -26,4 +26,14 @@ class Project
       })
     end
   end
+
+  def self.find(id)
+    results = DB.exec("SELECT * FROM projects WHERE id = #{id};")
+    if results.any?
+      return Project.new({
+        title: results.first["title"],
+        id: results.first["id"]
+      })
+    end
+  end
 end
