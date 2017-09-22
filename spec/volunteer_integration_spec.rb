@@ -94,3 +94,17 @@ describe 'project search', {:type => :feature} do
     expect(page).to have_content('Search Results: Teaching Kids to Code')
   end
 end
+
+describe 'volunteer search', {:type => :feature} do
+  it "allows a user to search for a project" do
+    test_project = Project.new({:title => 'Teaching Kids to Code', :id => nil})
+    test_project.save
+    project_id = test_project.id.to_i
+    test_volunteer = Volunteer.new({:name => 'Jasmine', :project_id => project_id, :id => nil})
+    test_volunteer.save
+    visit('volunteers/all')
+    fill_in('search-term', with: "Jasmine")
+    click_button('search', :id)
+    expect(page).to have_content('Search Results: Jasmine')
+  end
+end
