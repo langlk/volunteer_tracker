@@ -108,3 +108,19 @@ describe 'volunteer search', {:type => :feature} do
     expect(page).to have_content('Search Results: Jasmine')
   end
 end
+
+describe 'volunteer list page', {:type => :feature} do
+  it "shows all volunteers in alphabetical order by name" do
+    test_project = Project.new({:title => 'Teaching Kids to Code', :id => nil})
+    test_project.save
+    project_id = test_project.id.to_i
+    volunteer1 = Volunteer.new({:name => 'Jasmine', :project_id => project_id, :id => nil})
+    volunteer1.save
+    volunteer2 = Volunteer.new({:name => 'Adam', :project_id => project_id, :id => nil})
+    volunteer2.save
+    volunteer3 = Volunteer.new({:name => 'Chris', :project_id => project_id, :id => nil})
+    volunteer3.save
+    visit('/volunteers/all')
+    expect(page).to have_content('Adam Chris Jasmine')
+  end
+end
