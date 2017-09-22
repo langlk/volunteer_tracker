@@ -3,7 +3,7 @@ $(document).ready(function() {
     var title = $("#title").val()
     if (title.length == 0) {
       event.preventDefault()
-      $(".alert").show()
+      $(".project-error").show()
       $(".title").addClass("has-error")
     }
   });
