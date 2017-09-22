@@ -92,7 +92,7 @@ describe Project do
   end
 
   describe '.search' do
-    it "searches for a project by name, ignoring case" do
+    it "searches for a project by title, ignoring case" do
       project = Project.new({:title => 'Teaching Kids to Code', :id => nil})
       project.save
       project2 = Project.new({:title => 'Teaching Kids Math', :id => nil})

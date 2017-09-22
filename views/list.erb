@@ -1,15 +1,42 @@
 <% if (@section == 'projects') | (@section == 'volunteers') %>
-  <h2>All <%= @section.capitalize %></h2>
+  <h2><%= @search_term ? "Search" : "All" %> <%= @section.capitalize %></h2>
   <% if @list.any? %>
-    <ul>
-      <% @list.each do |item| %>
-        <li>
-          <a href="/<%= @section %>/<%= item.id %>">
-            <%= @section == 'projects' ? item.title : item.name %>
-          </a>
-        </li>
-      <% end %>
-    </ul>
+    <form action="/<%= @section %>/all">
+      <input type="text" name="search-term" class="form-control" placeholder="Search">
+
+      <button id="search" type="submit" class="btn btn-default">
+        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+      </button>
+    </form>
+    <!-- Show search results  -->
+    <% if @search_term %>
+      <h4>Search Results:</h4>
+        <% if @search_results.empty? %>
+          <p>No <%= @section %> match search: "<%= @search_term %>"</p>
+        <% else %>
+          <ul>
+            <% @search_results.each do |result| %>
+              <li>
+                <a href="/<%= @section %>/<%= result.id %>">
+                  <%= @section == 'projects' ? result.title : result.name %>
+                </a>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+        <a href="/projects/all">Clear Search</a>
+      <!-- Show all items -->
+      <% else %>
+        <ul>
+          <% @list.each do |item| %>
+            <li>
+              <a href="/<%= @section %>/<%= item.id %>">
+                <%= @section == 'projects' ? item.title : item.name %>
+              </a>
+            </li>
+          <% end %>
+        </ul>
+    <% end %>
   <% else %>
     <p>No <%= @section %> added yet.</p>
   <% end %>

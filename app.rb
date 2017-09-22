@@ -16,9 +16,16 @@ end
 
 get('/:section/all') do
   @section = params[:section]
+  @search_term = params["search-term"]
   if @section == 'projects'
+    if @search_term
+      @search_results = Project.search(@search_term)
+    end
     @list = Project.all
   elsif @section == 'volunteers'
+    if @search_term
+      @search_results = Volunteer.search(@search_term)
+    end
     @list = Volunteer.all
   end
   erb(:list)

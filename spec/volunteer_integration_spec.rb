@@ -80,3 +80,17 @@ describe 'the volunteer delete path', {:type => :feature} do
     expect(page).to have_no_content('Jasmine')
   end
 end
+
+# Search Functionality
+
+describe 'project search', {:type => :feature} do
+  it "allows a user to search for a project" do
+    test_project = Project.new({:title => 'Teaching Kids to Code', :id => nil})
+    test_project.save
+    id = test_project.id
+    visit('/projects/all')
+    fill_in('search-term', with: "Teaching Kids to Code")
+    click_button('search', :id)
+    expect(page).to have_content('Search Results: Teaching Kids to Code')
+  end
+end
