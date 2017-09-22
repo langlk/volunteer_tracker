@@ -14,6 +14,16 @@ get('/') do
   erb(:index)
 end
 
+get('/:section/all') do
+  @section = params[:section]
+  if @section == 'projects'
+    @list = Project.all
+  elsif @section == 'volunteers'
+    @list = Volunteer.all
+  end
+  erb(:list)
+end
+
 post('/add-project') do
   title = params["title"]
   project = Project.new({title: title})

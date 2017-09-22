@@ -1,0 +1,19 @@
+<% if (@section == 'projects') | (@section == 'volunteers') %>
+  <h2>All <%= @section.capitalize %></h2>
+  <% if @list.any? %>
+    <ul>
+      <% @list.each do |item| %>
+        <li>
+          <a href="/<%= @section %>/<%= item.id %>">
+            <%= @section == 'projects' ? item.title : item.name %>
+          </a>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>No <%= @section %> added yet.</p>
+  <% end %>
+<% else %>
+  <h2>Page Not Found</h2>
+<% end %>
+<h5><a href="/">Back to Homepage</a></h5>
